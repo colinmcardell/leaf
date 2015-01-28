@@ -1,3 +1,12 @@
+Except as otherwise noted, all files contained within "leaf" are copyright Colin McArdell and can be distributed freely according to the terms of the GNU GENERAL PUBLIC LICENSE v3 found below.
+
+Where files have been imported from outside sources, comments inside the file describe the authors and the license to apply to these files.
+
+As an example, the "rj" library of abstractions include code which is under copyright Reality Jockey Ltd. which is copyrighted according to GNU GENERAL PUBLIC LICENSE v3 which also includes code written by Miller Puckette and others and are copyrighted according to the "Standard Improved BSD License" license found in this file as well.
+Additional dependency for this project are managed by Cocoapods and not distributed with the project, however can be pulled in to the project using Cocoapods where appropriate compatiable licenses can be found.
+
+<Start of GPLv3>
+
 GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
 
@@ -673,3 +682,21 @@ the library.  If this is what you want to do, use the GNU Lesser General
 Public License instead of this License.  But first, please read
 <http://www.gnu.org/philosophy/why-not-lgpl.html>.
 
+</End of GPLv3>
+
+<Start of BSD>
+
+Standard Improved BSD License
+==============================
+
+This software is copyrighted by Miller Puckette and others.  The following terms (the "Standard Improved BSD License") apply to all files associated with the software unless explicitly disclaimed in individual files:
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above   copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+3. The name of the author may not be used to endorse or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED   TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,   DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND   ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT   LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING   IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF   THE POSSIBILITY OF SUCH DAMAGE.
+
+</End of BSD>
