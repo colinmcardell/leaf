@@ -1,0 +1,61 @@
+//  stylesheet.cas
+//
+//  leaf - iOS Synthesizer
+//  Copyright (C) 2015 Colin McArdell
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
+
+$default-background-color = rgba(45,45,45,1)
+$default-control-color-light-gray = rgba(70,75,70,1)
+$default-control-color-dark = rgba(39,39,39,1)
+$default-control-color-green = rgba(40,55,40,1)
+
+^ UILabel
+    background-color clear
+    text-color white
+    font Silkscreen 12
+    text-alignment center
+
+LFSliderPackView
+    background-color $default-background-color
+
+    min-track-color[state:normal] $default-control-color-light-gray
+    min-track-color[state:highlighted] $default-control-color-green
+
+    max-track-color[state:normal] rgba(40,40,40,1)
+    max-track-color[state:highlighted] $default-control-color-dark
+
+    slider-thumb-color rgba(30,30,30,1)
+
+LFStepper
+    normal-background-color $default-control-color-dark
+    highlighted-background-color $default-control-color-green
+    selected-background-color $default-control-color-light-gray
+    ^ UILabel
+        font Silkscreen 11
+
+UIView.controlsContainer
+    background-color $default-background-color
+
+UIView.mainView
+    background-color rgba(22,22,22,1)
+    
+LFButton
+    normal-background-color $default-control-color-dark
+    highlighted-background-color $default-control-color-green
+    selected-background-color $default-control-color-light-gray
+
+    ^ UILabel
+        font Silkscreen 13
