@@ -48,18 +48,23 @@ typedef NS_ENUM(NSInteger, LFMidiStatus) {
     LFMidiStatusSystemReset         = 0xFF
 };
 
-uint64_t absoluteToNanos(uint64_t time) {
-    static struct mach_timebase_info timebaseInfo;
-    if(timebaseInfo.denom == 0) { // only init once
-        mach_timebase_info(&timebaseInfo);
+uint64_t absoluteToNanos(uint64_t time)
+{
+    const int64_t kOneThousand = 1000;
+    static mach_timebase_info_data_t s_timebase_info;
+    // Only init s_timebase_info once
+    if (s_timebase_info.denom == 0) {
+        (void)mach_timebase_info(&s_timebase_info);
     }
-    return time * timebaseInfo.numer / timebaseInfo.denom;
+    
+    return (uint64_t)((time * s_timebase_info.numer) / (kOneThousand * s_timebase_info.denom));
 }
 
 @interface LFMidi () <PGMidiDelegate, PGMidiSourceDelegate> {
     BOOL _continueSysex;
     BOOL _firstPacket;
     MIDITimeStamp _lastTime;
+    MIDITimeStamp _currentTime;
     NSMutableData *_messageIn;
     NSMutableData *_messageOut;
 }
@@ -184,27 +189,6 @@ uint64_t absoluteToNanos(uint64_t time) {
 }
 
 #pragma mark - Private
-/*
-LFMidiStatusNoteOff             = 0x80,
-LFMidiStatusNoteOn              = 0x90,
-LFMidiStatusControlChange       = 0xB0,
-LFMidiStatusProgramChange       = 0xC0,
-LFMidiStatusPitchBend           = 0xE0,
-LFMidiStatusAftertouch          = 0xD0,
-LFMidiStatusPolyAftertouch      = 0xA0,
-LFMidiStatusSysex               = 0xF0,
-LFMidiStatusTimeCode            = 0xF1,
-LFMidiStatusSongPositionPointer = 0xF2,
-LFMidiStatusSongSelect          = 0xF3,
-LFMidiStatusTuneRequest         = 0xF6,
-LFMidiStatusSysexEnd            = 0xF7,
-LFMidiStatusTimeClock           = 0xF8,
-LFMidiStatusStart               = 0xFA,
-LFMidiStatusContinue            = 0xFB,
-LFMidiStatusStop                = 0xFC,
-LFMidiStatusActiveSensing       = 0xFE,
-LFMidiStatusSystemReset         = 0xFF
- */
 
 + (NSDictionary *)_statusMessageSizeMap
 {
@@ -221,7 +205,7 @@ LFMidiStatusSystemReset         = 0xFF
 
 - (NSInteger)_sizeOfStatus:(LFMidiStatus)status
 {
-    return [[[LFMidi _statusMessageSizeMap] objectForKey:@(status)] integerValue];
+    return [[[self.class _statusMessageSizeMap] objectForKey:@(status)] integerValue];
 }
 
 - (void)handleMessage:(NSData *)message withDelta:(double)deltaTime
@@ -240,9 +224,13 @@ LFMidiStatusSystemReset         = 0xFF
     
     switch (statusByte) {
         case LFMidiStatusNoteOn:
+            if ([self delegate] && [self.delegate respondsToSelector:@selector(midiNoteOn:velocity:channel:)]) {
+                [self.delegate midiNoteOn:bytes[1] velocity:bytes[2] channel:channel];
+            }
+            break;
         case LFMidiStatusNoteOff:
-            if ([self delegate] && [self.delegate respondsToSelector:@selector(midiNote:velocity:channel:)]) {
-                [self.delegate midiNote:bytes[1] velocity:bytes[2] channel:channel];
+            if ([self delegate] && [self.delegate respondsToSelector:@selector(midiNoteOff:velocity:channel:)]) {
+                [self.delegate midiNoteOff:bytes[1] velocity:bytes[2] channel:channel];
             }
             break;
         case LFMidiStatusControlChange:
@@ -351,8 +339,9 @@ LFMidiStatusSystemReset         = 0xFF
                 timeStamp; // Returns Time Stamp
             });
             
-            if (!_continueSysex) delta = absoluteToNanos(time) * 0.000001;
+            if (!_continueSysex) delta = absoluteToNanos(time);
         }
+        
         _lastTime = ({
             MIDITimeStamp timeStamp = packet->timeStamp;
             timeStamp = timeStamp == 0 ? mach_absolute_time() : timeStamp;
@@ -451,6 +440,35 @@ LFMidiStatusSystemReset         = 0xFF
     }
 }
 
+@end
 
+@implementation LFMidiNote
+
+- (instancetype)initWithNote:(NSInteger)note withVelocity:(NSInteger)velocity withChannel:(NSInteger)channel
+{
+    self = [super init];
+    if (!self) return nil;
+    
+    _channel = channel;
+    _note = note;
+    _velocity = velocity;
+    
+    return self;
+}
+
+- (BOOL)isEqual:(id)object
+{
+    if (object == self) return YES;
+    if (!object || ![object isKindOfClass:[self class]]) return NO;
+    return [self isEqualToNote:(LFMidiNote *)object];
+}
+
+- (BOOL)isEqualToNote:(LFMidiNote *)note
+{
+    if (note == self) return YES;
+    if ([note note] != [self note]) return NO;
+    if ([note channel] != [self channel]) return NO;
+    return YES;
+}
 
 @end

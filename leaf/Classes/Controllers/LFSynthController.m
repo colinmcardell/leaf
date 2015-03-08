@@ -34,7 +34,7 @@
 #define kDefaultMidiChannel 0 // 0 = MIDI Channel 1
 #define kDefaultVelocity 127
 
-#define kDebug YES
+#define kDebug NO
 
 // ***** Setter Macros *****
 // NSNumber * as floatValue
@@ -83,6 +83,7 @@ GENERATE_SETTER(PROPERTY, \
 @property (strong, nonatomic) PdAudioController *audioController;
 @property (strong, nonatomic) PdDispatcher *dispatcher;
 @property (strong, nonatomic) LFMidi *midi;
+@property (strong, nonatomic) NSMutableArray *midiNoteOnArray;
 
 @end
 
@@ -90,15 +91,13 @@ GENERATE_SETTER(PROPERTY, \
 
 + (LFSynthController *)sharedController
 {
-    static LFSynthController *_sharedController = nil;
+    static LFSynthController *sharedController;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedController = [[self alloc] init];
+    });
 
-    @synchronized (self) {
-        if (_sharedController == nil) {
-            _sharedController = [[self alloc] init];
-        }
-    }
-
-    return _sharedController;
+    return sharedController;
 }
 
 #pragma mark - Lifecycle
@@ -106,27 +105,32 @@ GENERATE_SETTER(PROPERTY, \
 - (id)init
 {
     self = [super init];
-    if (self) {
-        _dispatcher = [[PdDispatcher alloc] init];
-        [PdBase setDelegate:_dispatcher];
+    if (!self) return nil;
 
-        _audioController = ({
-            PdAudioController *audioController = [[PdAudioController alloc] init];
-            [audioController configureAmbientWithSampleRate:44100 numberChannels:2 mixingEnabled:YES];
+    _dispatcher = [[PdDispatcher alloc] init];
+    [PdBase setDelegate:_dispatcher];
+
+    _audioController = ({
+        PdAudioController *audioController = [[PdAudioController alloc] init];
+        [audioController configureAmbientWithSampleRate:44100 numberChannels:2 mixingEnabled:YES];
 #ifdef DEBUG
-            [audioController print];
+        [audioController print];
 #endif
-            [audioController setActive:YES];
+        [audioController setActive:YES];
 
-            audioController;
-        });
-        
-        [self setMidi:[[LFMidi alloc] init]];
-        [self.midi setDelegate:self];
-        
-        [PdBase openFile:kLeafPdPatchName path:[[NSBundle mainBundle] bundlePath]];
-        [self defaultState];
-    }
+        audioController;
+    });
+    
+    _midiNoteOnArray = [[NSMutableArray alloc] init];
+    
+    _midi = ({
+        LFMidi *midi = [[LFMidi alloc] init];
+        [midi setDelegate:self];
+        midi;
+    });
+    
+    [PdBase openFile:kLeafPdPatchName path:[[NSBundle mainBundle] bundlePath]];
+    [self defaultState];
 
     return self;
 }
@@ -356,10 +360,37 @@ GENERATE_PD_FLOAT_SETTER(arpGate, setArpGate, kReceiver_arpGate)
 
 #pragma mark - LFMidiDelegate
 
-- (void)midiNote:(int)pitch velocity:(int)velocity channel:(int)channel
+- (void)midiNoteOn:(int)pitch velocity:(int)velocity channel:(int)channel
 {
-    DDLogDebug(@"MIDI Received: Pitch – %i, Velocity – %i, Channel – %i", pitch, velocity, channel);
-    [self sendNoteOn:@(channel) note:@(pitch) velocity:@(velocity)];
+    LFMidiNote *note = [[LFMidiNote alloc] initWithNote:pitch withVelocity:velocity withChannel:channel];
+    if ([self.midiNoteOnArray containsObject:note]) return;
+    
+    LFMidiNote *firstNote = [self.midiNoteOnArray firstObject];
+    if (firstNote) {
+        [self sendNoteOn:@([note channel]) note:@([note note]) velocity:@([firstNote velocity])];
+    }
+    else {
+        [self sendNoteOn:@([note channel]) note:@([note note]) velocity:@([note velocity])];
+    }
+
+    [self.midiNoteOnArray addObject:note];
+}
+
+- (void)midiNoteOff:(int)pitch velocity:(int)velocity channel:(int)channel
+{
+    LFMidiNote *note = [[LFMidiNote alloc] initWithNote:pitch withVelocity:velocity withChannel:channel];
+
+    if (![self.midiNoteOnArray containsObject:note]) return;
+    
+    if ([[self.midiNoteOnArray lastObject] isEqual:note]) {
+        [self sendNoteOff:@([note channel]) note:@([note note]) velocity:@(0)];
+        [self.midiNoteOnArray removeObject:note];
+        note = [self.midiNoteOnArray lastObject];
+        if (note) [self sendNoteOn:@([note channel]) note:@([note note]) velocity:@([note velocity])];
+    }
+    else {
+        [self.midiNoteOnArray removeObject:note];
+    }
 }
 
 @end

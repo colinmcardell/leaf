@@ -28,7 +28,8 @@
 - (void)midiInputConnectionEvent;
 - (void)midiOutputConnectionEvent;
 
-- (void)midiNote:(int)pitch velocity:(int)velocity channel:(int)channel;
+- (void)midiNoteOn:(int)pitch velocity:(int)velocity channel:(int)channel;
+- (void)midiNoteOff:(int)pitch velocity:(int)velocity channel:(int)channel;
 - (void)midiControlChange:(int)controller value:(int)value channel:(int)channel;
 - (void)midiProgramChange:(int)value channel:(int)channel;
 - (void)midiPitchBend:(int)value channel:(int)channel;
@@ -51,8 +52,18 @@
 @property (weak, nonatomic, readonly) NSArray *inputs;
 @property (weak, nonatomic, readonly) NSArray *outputs;
 
-@property (assign, nonatomic, getter=shouldIgnoreSysex) BOOL ignoreSysex;
-@property (assign, nonatomic, getter=shouldIgnoreTiming) BOOL ignoreTiming;
-@property (assign, nonatomic, getter=shouldIgnoreSense) BOOL ignoreSense;
+@property (assign, nonatomic, getter=shouldIgnoreSysex) BOOL ignoreSysex; // defaults to NO
+@property (assign, nonatomic, getter=shouldIgnoreTiming) BOOL ignoreTiming; // defaults to YES
+@property (assign, nonatomic, getter=shouldIgnoreSense) BOOL ignoreSense; // defaults to YES
+
+@end
+
+@interface LFMidiNote : NSObject
+
+- (instancetype)initWithNote:(NSInteger)note withVelocity:(NSInteger)velocity withChannel:(NSInteger)channel;
+
+@property (assign, nonatomic, readonly) NSInteger channel;
+@property (assign, nonatomic, readonly) NSInteger note;
+@property (assign, nonatomic, readonly) NSInteger velocity;
 
 @end
