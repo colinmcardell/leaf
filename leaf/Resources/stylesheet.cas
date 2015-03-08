@@ -24,7 +24,6 @@ $default-control-color-green = rgba(39, 174, 96, 1)
 
 ^UILabel
     background-color clear
-    text-color white
     font Silkscreen 12
     text-alignment center
 
@@ -38,12 +37,19 @@ LFSliderPackView
     max-track-color[state:highlighted] $default-control-color-dark
 
     slider-thumb-color rgba(30,30,30,1)
+    ^UILabel
+        text-color white
+
+^LFViewController
+    ^UILabel
+        text-color white
 
 LFStepper
     normal-background-color $default-control-color-dark
     highlighted-background-color $default-control-color-green
     selected-background-color $default-control-color-light-gray
     ^UILabel
+        text-color white
         font Silkscreen 11
 
 UIView.controlsContainer
@@ -51,6 +57,17 @@ UIView.controlsContainer
 
 UIView.mainView
     background-color rgba(22,22,22,1)
+
+UITableView
+    background-color clear
+    shows-vertical-scroll-indicator NO
+
+    UITableViewCell
+        background-color clear
+        selection-style none
+        UILabel
+            text-alignment left
+            number-of-lines 0
 
 LFButton
     normal-background-color $default-control-color-dark

@@ -18,8 +18,8 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#import "LFViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface LFMainViewController : LFViewController
+@interface LFMainViewController : UIViewController
 
 @end

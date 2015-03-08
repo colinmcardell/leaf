@@ -60,6 +60,7 @@
 		F777B9DA18D00080009D4BD0 /* stylesheet.cas in Resources */ = {isa = PBXBuildFile; fileRef = F777B9D918D00080009D4BD0 /* stylesheet.cas */; };
 		F777B9E718D29AEE009D4BD0 /* LFSliderPackView.m in Sources */ = {isa = PBXBuildFile; fileRef = F777B9E618D29AEE009D4BD0 /* LFSliderPackView.m */; };
 		F777B9EB18DA37EA009D4BD0 /* slkscr.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F777B9EA18DA37EA009D4BD0 /* slkscr.ttf */; };
+		F7B2C4AD1AAA2A97001C6E70 /* LFLoggerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B2C4AC1AAA2A97001C6E70 /* LFLoggerView.m */; };
 		F7B4BD9618CE907400A9B1D2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7B4BD9518CE907400A9B1D2 /* Foundation.framework */; };
 		F7B4BD9818CE907400A9B1D2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7B4BD9718CE907400A9B1D2 /* CoreGraphics.framework */; };
 		F7B4BD9A18CE907400A9B1D2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7B4BD9918CE907400A9B1D2 /* UIKit.framework */; };
@@ -186,6 +187,8 @@
 		F777B9E518D29AEE009D4BD0 /* LFSliderPackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LFSliderPackView.h; path = Classes/Views/LFSliderPackView.h; sourceTree = "<group>"; };
 		F777B9E618D29AEE009D4BD0 /* LFSliderPackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LFSliderPackView.m; path = Classes/Views/LFSliderPackView.m; sourceTree = "<group>"; };
 		F777B9EA18DA37EA009D4BD0 /* slkscr.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = slkscr.ttf; path = Resources/slkscr.ttf; sourceTree = "<group>"; };
+		F7B2C4AB1AAA2A97001C6E70 /* LFLoggerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LFLoggerView.h; path = Classes/Views/LFLoggerView.h; sourceTree = "<group>"; };
+		F7B2C4AC1AAA2A97001C6E70 /* LFLoggerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LFLoggerView.m; path = Classes/Views/LFLoggerView.m; sourceTree = "<group>"; };
 		F7B4BD9218CE907400A9B1D2 /* leaf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = leaf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7B4BD9518CE907400A9B1D2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F7B4BD9718CE907400A9B1D2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -402,10 +405,12 @@
 			isa = PBXGroup;
 			children = (
 				F7DE2AB518FAE4CD00BD6091 /* Keyboard */,
-				F7DE2A9118E8EBA700BD6091 /* LFSliderPackView+CASAdditions.h */,
-				F7DE2A9218E8EBA700BD6091 /* LFSliderPackView+CASAdditions.m */,
+				F7B2C4AB1AAA2A97001C6E70 /* LFLoggerView.h */,
+				F7B2C4AC1AAA2A97001C6E70 /* LFLoggerView.m */,
 				F777B9E518D29AEE009D4BD0 /* LFSliderPackView.h */,
 				F777B9E618D29AEE009D4BD0 /* LFSliderPackView.m */,
+				F7DE2A9118E8EBA700BD6091 /* LFSliderPackView+CASAdditions.h */,
+				F7DE2A9218E8EBA700BD6091 /* LFSliderPackView+CASAdditions.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -941,6 +946,7 @@
 				F7DE2AA618EBAD4300BD6091 /* LFOscWaveViewController.m in Sources */,
 				F7C6743E1A5DA26500762BA6 /* LFDelayViewModel.m in Sources */,
 				F7DE2AB818FAE4F600BD6091 /* LFKeyboardView.m in Sources */,
+				F7B2C4AD1AAA2A97001C6E70 /* LFLoggerView.m in Sources */,
 				F7C674BB1A65805900762BA6 /* LFMidi.m in Sources */,
 				F7C674A01A5F14CF00762BA6 /* LFOscRangeViewModel.m in Sources */,
 				F7C674331A5DA09200762BA6 /* LFDelayViewController.m in Sources */,

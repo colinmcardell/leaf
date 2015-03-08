@@ -15,13 +15,13 @@ PODS:
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
   - Classy (0.2.4)
-  - CocoaLumberjack (2.0.0-rc):
-    - CocoaLumberjack/Default (= 2.0.0-rc)
-    - CocoaLumberjack/Extensions (= 2.0.0-rc)
-  - CocoaLumberjack/Core (2.0.0-rc)
-  - CocoaLumberjack/Default (2.0.0-rc):
+  - CocoaLumberjack (2.0.0-rc2):
+    - CocoaLumberjack/Default (= 2.0.0-rc2)
+    - CocoaLumberjack/Extensions (= 2.0.0-rc2)
+  - CocoaLumberjack/Core (2.0.0-rc2)
+  - CocoaLumberjack/Default (2.0.0-rc2):
     - CocoaLumberjack/Core
-  - CocoaLumberjack/Extensions (2.0.0-rc):
+  - CocoaLumberjack/Extensions (2.0.0-rc2):
     - CocoaLumberjack/Default
   - libextobjc (0.4.1):
     - libextobjc/EXTADT (= 0.4.1)
@@ -59,14 +59,14 @@ PODS:
   - libextobjc/RuntimeExtensions (0.4.1)
   - libextobjc/UmbrellaHeader (0.4.1)
   - libpd (0.7.0)
-  - Masonry (0.6.0)
+  - Masonry (0.6.1)
   - PGMidi (0.0.5)
-  - ReactiveCocoa (2.4.4):
-    - ReactiveCocoa/UI (= 2.4.4)
-  - ReactiveCocoa/Core (2.4.4):
+  - ReactiveCocoa (2.4.7):
+    - ReactiveCocoa/UI (= 2.4.7)
+  - ReactiveCocoa/Core (2.4.7):
     - ReactiveCocoa/no-arc
-  - ReactiveCocoa/no-arc (2.4.4)
-  - ReactiveCocoa/UI (2.4.4):
+  - ReactiveCocoa/no-arc (2.4.7)
+  - ReactiveCocoa/UI (2.4.7):
     - ReactiveCocoa/Core
   - ReactiveViewModel (0.3):
     - ReactiveCocoa (~> 2.4)
@@ -96,13 +96,13 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   BlocksKit: 4439e7f30a9f90743462ca63545a15c1f4304cef
   Classy: 8c8f835d51e20d25e9cce0d864fba5bf1cef6070
-  CocoaLumberjack: 6186e27827fc574b50b16c10102fcc591437f06c
+  CocoaLumberjack: 6027cd9a0665203a7df456c526e137f02cd547e1
   libextobjc: d6146fce3ebea986b7f75fcb4c967639200b88b0
   libpd: f9e63d090e284438826f9b2fdc0810dbb9889e6f
-  Masonry: 0bc111d6902e3a55ff8423bcbdf7155261806547
+  Masonry: 2cb49fd14d203d2db5ca6bb017135b235dde9980
   PGMidi: 1ec556ba394940bd0f9d847b14f68b4af0f12f56
-  ReactiveCocoa: 31119068e3dde866bd257cf74e1f06b4023bf387
+  ReactiveCocoa: 313fc53cc9aeb2bbbc3f5f13c7eac16478d9af8f
   ReactiveViewModel: 512224f801ea0a603fd394eed0f38bc662b64b9a
   UIImage+Additions: c9088e24e095113a81b4ab31271d5b656850317c
 
-COCOAPODS: 0.36.0.beta.1
+COCOAPODS: 0.36.0.rc.1

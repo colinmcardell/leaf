@@ -24,6 +24,7 @@
 #import "LFFilterViewController.h"
 #import "LFGlideViewController.h"
 #import "LFKeyboardViewController.h"
+#import "LFLoggerView.h"
 #import "LFMasterViewController.h"
 #import "LFOscBasicViewController.h"
 #import "LFOscRangeViewController.h"
@@ -53,6 +54,9 @@
 @property (assign, nonatomic) BOOL playing;
 @property (strong, nonatomic) LFSynthController *synthController;
 
+@property (strong, nonatomic) UIView *loggerContainerView;
+@property (strong, nonatomic) LFLoggerView *loggerView;
+
 @end
 
 @implementation LFMainViewController
@@ -60,9 +64,12 @@
 - (id)init
 {
     self = [super init];
-    if (self) {
-        [self setTitle:@"leaf"];
-    }
+    if (!self) return nil;
+
+    LFLoggerView *loggerView = [LFLoggerView sharedInstance];
+    [DDLog addLogger:loggerView];
+    _loggerView = loggerView;
+
     return self;
 }
 
@@ -70,10 +77,13 @@
 {
     [super viewDidLoad];
     
+    [self setTitle:@"leaf"];
     [self.view setCas_styleClass:@"mainView"];
     
     [self addSubviews];
     [self defineLayout];
+
+    [self.loggerView showLogInView:[self loggerContainerView]];
 }
 
 - (void)addSubviews
@@ -169,6 +179,9 @@
     [self addChildViewController:[self glideViewController]];
     [self.view addSubview:[self.glideViewController view]];
     [self.glideViewController didMoveToParentViewController:self];
+    
+    [self setLoggerContainerView:[UIView new]];
+    [self.view addSubview:[self loggerContainerView]];
 }
 
 - (void)defineLayout
@@ -281,6 +294,14 @@
         make.right.equalTo(superview).with.offset(-10.0f);
         make.bottom.equalTo(self.keyboardViewController.view.mas_top).with.offset(-10.0f);
         make.width.equalTo(@150.0f);
+    }];
+    
+    // Logger Container View
+    [self.loggerContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.masterViewController.view.mas_bottom).with.offset(10.0f);
+        make.left.equalTo(self.osc2View.mas_right).with.offset(10.0f);
+        make.right.equalTo(self.patternViewController.view.mas_left).with.offset(-10.0f);
+        make.bottom.equalTo(self.keyboardViewController.view.mas_top).with.offset(-10.0f);
     }];
     
     // Pattern
