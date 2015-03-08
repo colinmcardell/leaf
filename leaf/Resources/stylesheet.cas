@@ -20,9 +20,9 @@
 $default-background-color = rgba(45,45,45,1)
 $default-control-color-light-gray = rgba(70,75,70,1)
 $default-control-color-dark = rgba(39,39,39,1)
-$default-control-color-green = rgba(40,55,40,1)
+$default-control-color-green = rgba(39, 174, 96, 1)
 
-^ UILabel
+^UILabel
     background-color clear
     text-color white
     font Silkscreen 12
@@ -43,7 +43,7 @@ LFStepper
     normal-background-color $default-control-color-dark
     highlighted-background-color $default-control-color-green
     selected-background-color $default-control-color-light-gray
-    ^ UILabel
+    ^UILabel
         font Silkscreen 11
 
 UIView.controlsContainer
@@ -51,7 +51,7 @@ UIView.controlsContainer
 
 UIView.mainView
     background-color rgba(22,22,22,1)
-    
+
 LFButton
     normal-background-color $default-control-color-dark
     highlighted-background-color $default-control-color-green
