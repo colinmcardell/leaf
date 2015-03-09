@@ -50,8 +50,8 @@
 // Glide Constants
 #define kReceiver_glideToggle @"glideToggle"
 #define kReceiver_glide @"glide"
-#define kGlide_min 0.04f
-#define kGlide_max 0.5f
+#define kGlide_min 0.0f
+#define kGlide_max 1.0f
 // OSC 1 Constants
 #define kReceiver_osc1Volume @"leafOsc1Volume"
 #define kReceiver_osc1Phase @"leafOsc1Phase"

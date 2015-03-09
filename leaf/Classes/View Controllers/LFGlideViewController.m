@@ -57,8 +57,6 @@
     [self setupUI];
     [self defineLayout];
     
-//    RAC(self.titleLabel, text) = RACObserve(self.viewModel, title);
-    
     // Glide Toggle Bindings
     RAC(self.glideToggleButton, selected) = [self.viewModel glideToggleSignal];
     [self.glideToggleButton rac_liftSelector:@selector(setTitle:forState:)
@@ -84,9 +82,6 @@
 
 - (void)setupUI
 {
-//    [self setTitleLabel:[UILabel new]];
-//    [self.view addSubview:[self titleLabel]];
-    
     [self setGlideToggleButton:[LFButton new]];
     [self.view addSubview:[self glideToggleButton]];
     
@@ -97,13 +92,6 @@
 
 - (void)defineLayout
 {
-//    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self.view);
-//        make.height.equalTo(@20.0f);
-//        make.left.equalTo(self.view);
-//        make.right.equalTo(self.view);
-//    }];
-    
     [self.glideToggleButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view);
         make.left.equalTo(self.view);
