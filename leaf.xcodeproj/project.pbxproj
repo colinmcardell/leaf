@@ -60,6 +60,7 @@
 		F777B9DA18D00080009D4BD0 /* stylesheet.cas in Resources */ = {isa = PBXBuildFile; fileRef = F777B9D918D00080009D4BD0 /* stylesheet.cas */; };
 		F777B9E718D29AEE009D4BD0 /* LFSliderPackView.m in Sources */ = {isa = PBXBuildFile; fileRef = F777B9E618D29AEE009D4BD0 /* LFSliderPackView.m */; };
 		F777B9EB18DA37EA009D4BD0 /* slkscr.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F777B9EA18DA37EA009D4BD0 /* slkscr.ttf */; };
+		F7A8E7BB1AADFE4C00819C92 /* colors.cas in Resources */ = {isa = PBXBuildFile; fileRef = F7A8E7BA1AADFE4C00819C92 /* colors.cas */; };
 		F7B2C4AD1AAA2A97001C6E70 /* LFLoggerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B2C4AC1AAA2A97001C6E70 /* LFLoggerView.m */; };
 		F7B4BD9618CE907400A9B1D2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7B4BD9518CE907400A9B1D2 /* Foundation.framework */; };
 		F7B4BD9818CE907400A9B1D2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7B4BD9718CE907400A9B1D2 /* CoreGraphics.framework */; };
@@ -187,6 +188,7 @@
 		F777B9E518D29AEE009D4BD0 /* LFSliderPackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LFSliderPackView.h; path = Classes/Views/LFSliderPackView.h; sourceTree = "<group>"; };
 		F777B9E618D29AEE009D4BD0 /* LFSliderPackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LFSliderPackView.m; path = Classes/Views/LFSliderPackView.m; sourceTree = "<group>"; };
 		F777B9EA18DA37EA009D4BD0 /* slkscr.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = slkscr.ttf; path = Resources/slkscr.ttf; sourceTree = "<group>"; };
+		F7A8E7BA1AADFE4C00819C92 /* colors.cas */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = colors.cas; path = Resources/colors.cas; sourceTree = "<group>"; };
 		F7B2C4AB1AAA2A97001C6E70 /* LFLoggerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LFLoggerView.h; path = Classes/Views/LFLoggerView.h; sourceTree = "<group>"; };
 		F7B2C4AC1AAA2A97001C6E70 /* LFLoggerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LFLoggerView.m; path = Classes/Views/LFLoggerView.m; sourceTree = "<group>"; };
 		F7B4BD9218CE907400A9B1D2 /* leaf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = leaf.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -332,6 +334,7 @@
 		F777B97618CE9B49009D4BD0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F7A8E7BA1AADFE4C00819C92 /* colors.cas */,
 				F777B9D918D00080009D4BD0 /* stylesheet.cas */,
 				F777B9EA18DA37EA009D4BD0 /* slkscr.ttf */,
 				F777B97718CE9B55009D4BD0 /* Synth Engine */,
@@ -845,6 +848,7 @@
 				F777B9BC18CE9B55009D4BD0 /* m_scale.pd in Resources */,
 				F777B9C118CE9B55009D4BD0 /* s_blsquare-help.pd in Resources */,
 				F777B9CC18CE9B55009D4BD0 /* u_splicetrans.pd in Resources */,
+				F7A8E7BB1AADFE4C00819C92 /* colors.cas in Resources */,
 				F777B9B318CE9B55009D4BD0 /* e_lop2.pd in Resources */,
 				F777B9B918CE9B55009D4BD0 /* leaf.pd in Resources */,
 				F777B9BF18CE9B55009D4BD0 /* s_blsaw-help.pd in Resources */,

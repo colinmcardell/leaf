@@ -50,9 +50,10 @@ static const int kBlackKey2Count = sizeof(kBlackKey2Numbers) / sizeof(int);
     {
         _whiteKeys = [NSMutableArray arrayWithCapacity:kWhiteKeyCount];
         
+        UIColor *whiteColor = [UIColor colorWithRed:236.0f/255.0f green:240.0f/255.0f blue:241.0f/255.0f alpha:1.0f];
         for (int i = 0; i < kWhiteKeyCount; i++) {
             LFKeyView *key = [LFKeyView keyViewWithKeyNumber:cNote + kWhiteKeyNumbers[i]];
-            [key setBackgroundColor:[UIColor whiteColor]];
+            [key setBackgroundColor:whiteColor];
             [self addSubview:key];
             [_whiteKeys addObject:key];
         }

@@ -17,10 +17,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-$default-background-color = rgba(45,45,45,1)
-$default-control-color-light-gray = rgba(70,75,70,1)
-$default-control-color-dark = rgba(39,39,39,1)
-$default-control-color-green = rgba(39, 174, 96, 1)
+@import "colors.cas"
 
 ^UILabel
     background-color clear
@@ -28,35 +25,35 @@ $default-control-color-green = rgba(39, 174, 96, 1)
     text-alignment center
 
 LFSliderPackView
-    background-color $default-background-color
+    background-color $gray-medium
 
-    min-track-color[state:normal] $default-control-color-light-gray
-    min-track-color[state:highlighted] $default-control-color-green
+    min-track-color[state:normal] $gray-light
+    min-track-color[state:highlighted] $green-light
 
-    max-track-color[state:normal] rgba(40,40,40,1)
-    max-track-color[state:highlighted] $default-control-color-dark
+    max-track-color[state:normal] $gray-dark
+    max-track-color[state:highlighted] $green-dark
 
-    slider-thumb-color rgba(30,30,30,1)
+    slider-thumb-color $green-medium
     ^UILabel
-        text-color white
+        text-color $white-cloud
 
 ^LFViewController
     ^UILabel
-        text-color white
+        text-color $white-cloud
 
 LFStepper
-    normal-background-color $default-control-color-dark
-    highlighted-background-color $default-control-color-green
-    selected-background-color $default-control-color-light-gray
+    normal-background-color $green-medium
+    highlighted-background-color $green-light
+    selected-background-color $green-dark
     ^UILabel
-        text-color white
+        text-color $white-cloud
         font Silkscreen 11
 
 UIView.controlsContainer
-    background-color $default-background-color
+    background-color $gray-medium
 
 UIView.mainView
-    background-color rgba(22,22,22,1)
+    background-color $black
 
 UITableView
     background-color clear
@@ -70,9 +67,9 @@ UITableView
             number-of-lines 0
 
 LFButton
-    normal-background-color $default-control-color-dark
-    highlighted-background-color $default-control-color-green
-    selected-background-color $default-control-color-light-gray
+    normal-background-color $gray-light
+    highlighted-background-color $green-light
+    selected-background-color $green-medium
 
     ^ UILabel
         font Silkscreen 13
