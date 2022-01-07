@@ -373,7 +373,7 @@ uint64_t absoluteToNanos(uint64_t time)
                 
                 // Next byte in the packet should be a status byte
                 statusByte = packet->data[curByte];
-                if (!statusByte & LFMidiStatusNoteOn) break;
+                if ((!statusByte) & LFMidiStatusNoteOn) break;
                 
                 // Determine the number of bytes in the message
                 if (statusByte < LFMidiStatusProgramChange) {
