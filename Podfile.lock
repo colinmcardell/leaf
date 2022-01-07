@@ -32,8 +32,8 @@ PODS:
     - libextobjc/EXTScope (= 0.4.1)
     - libextobjc/EXTSelectorChecking (= 0.4.1)
     - libextobjc/EXTSynthesize (= 0.4.1)
-    - libextobjc/NSInvocation+EXT (= 0.4.1)
-    - libextobjc/NSMethodSignature+EXT (= 0.4.1)
+    - "libextobjc/NSInvocation+EXT (= 0.4.1)"
+    - "libextobjc/NSMethodSignature+EXT (= 0.4.1)"
     - libextobjc/RuntimeExtensions (= 0.4.1)
     - libextobjc/UmbrellaHeader (= 0.4.1)
   - libextobjc/EXTADT (0.4.1):
@@ -52,13 +52,13 @@ PODS:
     - libextobjc/RuntimeExtensions
   - libextobjc/EXTSynthesize (0.4.1):
     - libextobjc/RuntimeExtensions
-  - libextobjc/NSInvocation+EXT (0.4.1):
+  - "libextobjc/NSInvocation+EXT (0.4.1)":
     - libextobjc/RuntimeExtensions
-  - libextobjc/NSMethodSignature+EXT (0.4.1):
+  - "libextobjc/NSMethodSignature+EXT (0.4.1)":
     - libextobjc/RuntimeExtensions
   - libextobjc/RuntimeExtensions (0.4.1)
   - libextobjc/UmbrellaHeader (0.4.1)
-  - libpd (0.7.0)
+  - libpd (0.12.3)
   - Masonry (0.6.1)
   - PGMidi (0.0.5)
   - ReactiveCocoa (2.4.7):
@@ -70,39 +70,59 @@ PODS:
     - ReactiveCocoa/Core
   - ReactiveViewModel (0.3):
     - ReactiveCocoa (~> 2.4)
-  - UIImage+Additions (1.2.0)
+  - "UIImage+Additions (1.2.0)"
 
 DEPENDENCIES:
   - BlocksKit (~> 2.2)
   - Classy (~> 0.2)
   - CocoaLumberjack (~> 2.0.0-rc)
   - libextobjc (~> 0.3)
-  - libpd (~> 0.7.0)
+  - libpd (from `https://github.com/libpd/libpd`)
   - Masonry (~> 0.4)
   - PGMidi (from `https://github.com/petegoodliffe/PGMidi.git`)
   - ReactiveCocoa (~> 2.3)
   - ReactiveViewModel (~> 0.2)
-  - UIImage+Additions (~> 1.0)
+  - "UIImage+Additions (~> 1.0)"
+
+SPEC REPOS:
+  trunk:
+    - BlocksKit
+    - Classy
+    - CocoaLumberjack
+    - libextobjc
+    - Masonry
+    - ReactiveCocoa
+    - ReactiveViewModel
+    - "UIImage+Additions"
 
 EXTERNAL SOURCES:
+  libpd:
+    :git: https://github.com/libpd/libpd
+    :submodules: true
   PGMidi:
     :git: https://github.com/petegoodliffe/PGMidi.git
 
 CHECKOUT OPTIONS:
+  libpd:
+    :commit: 85332931d6b9f8fc9c56dcdfb6eedb5693935c7b
+    :git: https://github.com/libpd/libpd
+    :submodules: true
   PGMidi:
     :commit: 72cefa4ac7633b76658dcfb71b1a05a754becbf2
     :git: https://github.com/petegoodliffe/PGMidi.git
 
 SPEC CHECKSUMS:
-  BlocksKit: 4439e7f30a9f90743462ca63545a15c1f4304cef
-  Classy: 8c8f835d51e20d25e9cce0d864fba5bf1cef6070
-  CocoaLumberjack: 6027cd9a0665203a7df456c526e137f02cd547e1
-  libextobjc: d6146fce3ebea986b7f75fcb4c967639200b88b0
-  libpd: f9e63d090e284438826f9b2fdc0810dbb9889e6f
-  Masonry: 2cb49fd14d203d2db5ca6bb017135b235dde9980
-  PGMidi: 1ec556ba394940bd0f9d847b14f68b4af0f12f56
-  ReactiveCocoa: 313fc53cc9aeb2bbbc3f5f13c7eac16478d9af8f
-  ReactiveViewModel: 512224f801ea0a603fd394eed0f38bc662b64b9a
-  UIImage+Additions: c9088e24e095113a81b4ab31271d5b656850317c
+  BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
+  Classy: cebd1cf7f987ef58a124ed3a988a68186f10b547
+  CocoaLumberjack: dd725ca9088af37f16f957f6d88fbed69d54381c
+  libextobjc: a650fc1bf489a3d3a9bc2e621efa3e1006fc5471
+  libpd: 445932ee831e25fbb6bf1090fd613b2c3ba9bdd3
+  Masonry: 4972309f2f134de9dd312f4dc4a21359b50e6caa
+  PGMidi: ea9306f8e4a5ba90bdb5b5abeb64d6ac557b6654
+  ReactiveCocoa: eb38dee0a0e698f73a9b25e5c1faea2bb4c79240
+  ReactiveViewModel: 58918dcbcec2d3151195ab1ed9163c57a8163999
+  "UIImage+Additions": b93c3c23f87d22fca30c2de4a695eab9c029cf76
 
-COCOAPODS: 0.36.0.rc.1
+PODFILE CHECKSUM: 35d05282d71f2f5be739cacf1569063fc8001ee5
+
+COCOAPODS: 1.10.1
