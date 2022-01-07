@@ -110,24 +110,28 @@ GENERATE_SETTER(PROPERTY, \
     _dispatcher = [[PdDispatcher alloc] init];
     [PdBase setDelegate:_dispatcher];
 
-    _audioController = ({
-        PdAudioController *audioController = [[PdAudioController alloc] init];
-        [audioController configureAmbientWithSampleRate:44100 numberChannels:2 mixingEnabled:YES];
+    _audioController = [[PdAudioController alloc] init];
+    PdAudioStatus status = [_audioController configurePlaybackWithSampleRate:44100
+                                                               inputChannels:2
+                                                              outputChannels:2
+                                                                inputEnabled:YES];
+    if (status == PdAudioError) {
+        DDLogError(@"Error, could not configure audio");
+    } else if (status == PdAudioPropertyChanged) {
+        DDLogWarn(@"Some of the audio properties were changed during configuration");
+    } else {
+        DDLogDebug(@"Audio configuration successful");
+    }
+    
 #ifdef DEBUG
-        [audioController print];
+    [_audioController print];
 #endif
-        [audioController setActive:YES];
-
-        audioController;
-    });
+    [_audioController setActive:YES];
     
     _midiNoteOnArray = [[NSMutableArray alloc] init];
     
-    _midi = ({
-        LFMidi *midi = [[LFMidi alloc] init];
-        [midi setDelegate:self];
-        midi;
-    });
+    _midi = [[LFMidi alloc] init];
+    [_midi setDelegate:self];
     
     [PdBase openFile:kLeafPdPatchName path:[[NSBundle mainBundle] bundlePath]];
     [self defaultState];

@@ -30,6 +30,4 @@
 @property (strong, nonatomic) NSNumber *frequency;
 @property (strong, nonatomic) NSNumber *volume;
 
-@property (strong, nonatomic) NSString *title;
-
 @end
