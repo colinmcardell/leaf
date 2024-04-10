@@ -1,6 +1,9 @@
 # leaf
+
 #### An iPad Synthesizer built using Pure Data & libPd
 It sounds like, uh sounds? (buzzzzz, bleep blop blurp)
+
+TODO: Add screenshot here
 
 ## Description
 
@@ -10,14 +13,13 @@ grown from experimentation with the intention of learning some Pure Data as well
 as trying out fast prototyping of audio ideas without having to dig to deep into
 the CoreAudio or DSP end of things.
 
-leaf has been a slow growing project that is hopefully useful to others as an
-example as to some the complexities of Pure Data, implementation of
-Objective-C parameter interfacing with libPd, as well as generally entertaining
-to play with. By no means should leaf be considered the "right" way of doing
-things, as it is slightly over-complicated, and this overall implementation is
-screaming for refactors, optimizations and areas that should be completely
-ripped out... That being said, leaf is pretty cool, pretty functional, and
-ultimately some fun can be had with this project.
+leaf is hopefully useful to others as an example as to some the complexities of
+Pure Data, implementation of Objective-C parameter interfacing with libPd, as
+well as generally entertaining to play with. By no means should leaf be
+considered the "right" way of doing things, as it is slightly over-complicated,
+and this overall implementation is screaming for refactors, optimizations and
+areas that should be completely ripped out... That being said, leaf is pretty
+cool, pretty functional, and ultimately some fun can be had with this project.
 
 ## Dependencies
 

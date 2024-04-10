@@ -111,10 +111,7 @@ GENERATE_SETTER(PROPERTY, \
     [PdBase setDelegate:_dispatcher];
 
     _audioController = [[PdAudioController alloc] init];
-    PdAudioStatus status = [_audioController configurePlaybackWithSampleRate:44100
-                                                               inputChannels:2
-                                                              outputChannels:2
-                                                                inputEnabled:YES];
+    PdAudioStatus status = [_audioController configurePlaybackWithSampleRate:44100 numberChannels:2 inputEnabled:FALSE mixingEnabled:TRUE];
     if (status == PdAudioError) {
         DDLogError(@"Error, could not configure audio");
     } else if (status == PdAudioPropertyChanged) {
